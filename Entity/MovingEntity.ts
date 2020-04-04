@@ -19,9 +19,9 @@ export default class MovingEntity extends BaseGameEntity {
         return this.m_vHeading;
     }
     public set vHeading(v: Laya.Vector2) {
-        // 检查给定的方向是不是长度为零的向量
-        if (v.x * v.x + v.y * v.y - 1 < 0.000001) {
-            console.error("方向的标量必须大于1");
+        // 给定的方向必须为归一化之后的向量
+        if (v.x * v.x + v.y * v.y - 1 > 0.000001) {
+            console.error("请检查方向向量是否归一化");
             return;
         }
         this.m_vHeading = v;
@@ -110,6 +110,8 @@ export default class MovingEntity extends BaseGameEntity {
      * 给定目标位置，此方法旋转实体的航向和侧向量的值(不大于实体所能承受的最大扭力)，直到它直接面对目标
      * @param target 目标朝向(归一化向量)
      */
+
+     //// TODO
     public RotationHeadingToFacePosition(target: Laya.Vector2): boolean {
         // 获取纠正向量方向
         let toTarget: Laya.Vector2 = new Laya.Vector2(target.x - this.m_vHeading.x, target.y - this.m_vHeading.y);

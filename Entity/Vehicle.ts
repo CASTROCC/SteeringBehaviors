@@ -50,7 +50,7 @@ export default class Vehicle extends MovingEntity{
         this.m_SmoothingOn = v;
     }
     
-    /** 最新的更新时间 */
+    /** 最新的更新时间 毫秒为单位*/
     private m_deltaElapsed: number;
     public get deltaElapsed(): number {
         return this.m_deltaElapsed;
@@ -59,17 +59,7 @@ export default class Vehicle extends MovingEntity{
         this.m_deltaElapsed = v;
     }
 
-    /** laya渲染图形 */
-    private m_VehicleShape: Laya.Node;
-    public get VehicleShape(): Laya.Node {
-        return this.m_VehicleShape;
-    }
-    public set VehicleShape(v: Laya.Node) {
-        this.m_VehicleShape = v;
-    }
-
     constructor(
-        render: Laya.Node,
         world: GameWorld,
         position: Laya.Vector2,
         rotation: number,
@@ -81,8 +71,7 @@ export default class Vehicle extends MovingEntity{
         scale: number,
         radius: number = 0
     ) {
-        super(velocity, max_speed, new Laya.Vector2(Math.sin(rotation),-Math.cos(rotation)), mass, max_turn_rate, max_force, position, radius , new Laya.Vector2(scale, scale))
-        this.VehicleShape = render;
+        super(velocity, max_speed, new Laya.Vector2(Math.sin(rotation),-Math.cos(rotation)), mass, max_turn_rate, max_force, position, radius , new Laya.Vector2(scale, scale));
         this.m_GameWold = world;
         this.m_vSmoothedHeading = new Laya.Vector2(0, 0);
         this.m_deltaElapsed = 0.0;
@@ -103,15 +92,14 @@ export default class Vehicle extends MovingEntity{
         let acceleration = new Laya.Vector2(streeingForce.x / this.Mass, streeingForce.y / this.Mass);
         /// 更新速度 速度 = 当前速度 + (加速度 * 时间)
         this.Velocity = new Laya.Vector2((acceleration.x * dt) + this.Velocity.x, (acceleration.y * dt) + this.Velocity.y);
+        this.Velocity = Utils.VectorTruncate(this.Velocity, this.MaxSpeed);
         /// 更新位置 距离 = 时间 * 速度
         this.Pos = new Laya.Vector2((this.Velocity.x * dt) + this.Pos.x, (this.Velocity.y * dt) + this.Pos.y);
-
         /// 当且仅当当前速度不为0的时候，才更新方向向量，避免除0错误
         if (Laya.Vector2.scalarLength(this.Velocity) > 0.0000001) {
             let t = new Laya.Vector2();
             Laya.Vector2.normalize(this.Velocity, t);
             this.vHeading = t;
-            this.vSide = Utils.GetVectorPerp(this.vHeading);
         }
     }
 }
