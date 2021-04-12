@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-04-12T03:27:23.151Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" etag="5dqjxvJFhsHUomIukQnd" version="14.5.8" type="github">
+<mxfile host="app.diagrams.net" modified="2021-04-12T03:31:33.577Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" etag="YHZqYNvldi7l9eLB666T" version="14.5.8" type="github">
   <diagram name="BOKE_FISH" id="b5b7bab2-c9e2-2cf4-8b2a-24fd1a2a6d21">
     <mxGraphModel dx="2377" dy="868" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#ffffff" math="0" shadow="0">
       <root>
@@ -130,7 +130,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="f-Y9VzHZnFNgfBZq43af-1" value="ISoundAction&lt;br&gt;&lt;br&gt;onCreate(); // 创建音频声道，基于不同平台&lt;br&gt;Dispose(); // 销毁当前Action&lt;br&gt;onPlay(); // 播放音频&lt;br&gt;onIdle(); // 音频播放完成&lt;br&gt;FadeIn(); // 音频淡入&lt;br&gt;FadeOut(); // 音频淡出" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="f-Y9VzHZnFNgfBZq43af-1" value="ISoundAction&lt;br&gt;&lt;br&gt;onCreate(); // 创建音频声道，基于不同平台&lt;br&gt;Dispose(); // 销毁当前Action&lt;br&gt;onPlay(); // 播放音频&lt;br&gt;onIdle(); // 音频播放完成&lt;br&gt;FadeIn(); // 音频淡入&lt;br&gt;FadeOut(); // 音频淡出&lt;br&gt;setVolume(); // 设置音量" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="-30" y="780" width="250" height="160" as="geometry" />
         </mxCell>
         <mxCell id="f-Y9VzHZnFNgfBZq43af-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.996;entryY=0.11;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="f-Y9VzHZnFNgfBZq43af-2" target="f-Y9VzHZnFNgfBZq43af-1">
@@ -139,8 +139,8 @@
         <mxCell id="f-Y9VzHZnFNgfBZq43af-2" value="IAssets&lt;br&gt;&lt;br&gt;m_url: string; // 资源路径(key)&lt;br&gt;m_ref: number; // 资源引用&lt;br&gt;&lt;br&gt;onLoad(); // 资源正在加载&lt;br&gt;onLoaded(); // 资源加载完成&lt;br&gt;onLoadError(); // 资源加载失败&lt;br&gt;onRelease(); // 释放资源(引用)&lt;br&gt;Dispose(); // 销毁资源" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="310" y="700" width="220" height="180" as="geometry" />
         </mxCell>
-        <mxCell id="f-Y9VzHZnFNgfBZq43af-3" value="ISounManager&lt;br&gt;&lt;br&gt;ToggleEffect(audioId: number); // 切换音效&lt;br&gt;ToggleEffectByFade(audioId: number); // 淡入淡出切换音效&lt;br&gt;PlayBGM(): soundChancel; // 播放背景乐&lt;br&gt;RollBackBGM(): soundChancel; // 返回上一个背景音乐" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="295" y="950" width="250" height="160" as="geometry" />
+        <mxCell id="f-Y9VzHZnFNgfBZq43af-3" value="ISounManager&lt;br&gt;&lt;br&gt;m_GlobalEffectVolume; // 全局音量，所有音量设置在此系数上进行缩放&lt;br&gt;m_GlobalBGMVolume; // 全局背景音量&lt;br&gt;&lt;br&gt;ToggleEffect(audioId: number); // 切换音效&lt;br&gt;ToggleEffectByFade(audioId: number); // 淡入淡出切换音效&lt;br&gt;PlayBGM(): soundChancel; // 播放背景乐&lt;br&gt;RollBackBGM(): soundChancel; // 返回上一个背景音乐" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="295" y="900" width="250" height="210" as="geometry" />
         </mxCell>
         <mxCell id="f-Y9VzHZnFNgfBZq43af-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.002;entryY=0.406;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="f-Y9VzHZnFNgfBZq43af-4" target="f-Y9VzHZnFNgfBZq43af-1">
           <mxGeometry relative="1" as="geometry" />
